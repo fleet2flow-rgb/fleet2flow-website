@@ -4,26 +4,26 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fleet2Flow</title>
-  <meta name="description" content="Fleet2Flow entwickelt digitale Lösungen für effiziente Fahrzeugtransfers und reibungslose operative Abläufe." />
+  <meta name="description" content="Fleet2Flow entwickelt eine digitale Plattform für Fahrzeugtransfers mit automatisierter Routenplanung, intelligentem Matching und Fokus auf Effizienz und CO₂-Reduktion." />
   <style>
     :root {
-      --bg: #f5f7fb;
-      --surface: rgba(255, 255, 255, 0.86);
+      --bg: #f3f6f4;
+      --surface: rgba(255,255,255,0.82);
       --surface-strong: #ffffff;
-      --text: #0f172a;
-      --muted: #475569;
-      --line: rgba(15, 23, 42, 0.08);
-      --accent: #2f7a45;
-      --accent-dark: #245d35;
-      --shadow: 0 20px 60px rgba(15, 23, 42, 0.08);
-      --radius-xl: 30px;
-      --radius-lg: 20px;
-      --radius-md: 14px;
+      --text: #071c14;
+      --muted: #4d645a;
+      --line: rgba(7, 28, 20, 0.08);
+      --accent: #3e8e4e;
+      --accent-dark: #2f6f3d;
+      --accent-soft: rgba(62, 142, 78, 0.12);
+      --shadow: 0 25px 70px rgba(7, 28, 20, 0.08);
+      --radius-xl: 32px;
+      --radius-lg: 24px;
+      --radius-md: 16px;
       --max: 1180px;
     }
 
     * { box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
 
     body {
@@ -31,13 +31,13 @@
       font-family: Arial, Helvetica, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at top left, rgba(47, 122, 69, 0.08), transparent 28%),
-        radial-gradient(circle at bottom right, rgba(47, 122, 69, 0.06), transparent 30%),
-        var(--bg);
+        radial-gradient(circle at top left, rgba(62, 142, 78, 0.11), transparent 30%),
+        radial-gradient(circle at right center, rgba(62, 142, 78, 0.07), transparent 28%),
+        linear-gradient(180deg, #f7faf8 0%, #eef4f0 100%);
       line-height: 1.5;
     }
 
-    a { color: inherit; }
+    a { color: inherit; text-decoration: none; }
 
     .container {
       width: min(var(--max), calc(100% - 32px));
@@ -47,89 +47,93 @@
     .nav {
       position: sticky;
       top: 0;
-      z-index: 10;
-      backdrop-filter: blur(10px);
-      background: rgba(245, 247, 251, 0.82);
-      border-bottom: 1px solid rgba(15, 23, 42, 0.05);
+      z-index: 20;
+      background: rgba(243, 246, 244, 0.8);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(7, 28, 20, 0.05);
     }
 
     .nav-inner {
+      min-height: 82px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 20px;
-      min-height: 76px;
     }
 
     .brand {
       display: flex;
       align-items: center;
       gap: 14px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 18px;
+      font-weight: 800;
+      font-size: 19px;
+      letter-spacing: -0.02em;
     }
 
     .brand img {
-      width: 50px;
-      height: 50px;
+      width: 58px;
+      height: 58px;
       object-fit: contain;
-      border-radius: 12px;
+      border-radius: 14px;
       background: white;
-      padding: 4px;
-      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+      padding: 5px;
+      box-shadow: 0 12px 24px rgba(7, 28, 20, 0.08);
     }
 
     .nav-links {
       display: flex;
       align-items: center;
       gap: 18px;
-      font-size: 14px;
       color: var(--muted);
-    }
-
-    .nav-links a {
-      text-decoration: none;
+      font-size: 14px;
     }
 
     .nav-cta {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 12px 18px;
+      min-height: 44px;
+      padding: 0 18px;
       border-radius: 999px;
       background: var(--text);
       color: white;
-      text-decoration: none;
       font-weight: 700;
-      font-size: 14px;
     }
 
     .hero {
-      padding: 64px 0 28px;
+      padding: 42px 0 24px;
     }
 
-    .hero-grid {
+    .hero-shell {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 26px;
-      align-items: center;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 24px;
+      align-items: stretch;
     }
 
-    .hero-copy,
-    .hero-card,
-    .section-card,
-    .contact-card,
-    .form-card {
+    .panel {
       background: var(--surface);
       border: 1px solid var(--line);
       box-shadow: var(--shadow);
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(12px);
+      border-radius: var(--radius-xl);
     }
 
     .hero-copy {
-      border-radius: var(--radius-xl);
-      padding: 54px;
+      padding: 56px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-copy::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      bottom: -120px;
+      width: 280px;
+      height: 280px;
+      background: radial-gradient(circle, rgba(62,142,78,0.14), transparent 65%);
+      pointer-events: none;
     }
 
     .eyebrow {
@@ -138,25 +142,34 @@
       gap: 8px;
       padding: 9px 14px;
       border-radius: 999px;
-      background: rgba(47, 122, 69, 0.1);
-      color: var(--accent);
+      background: var(--accent-soft);
+      color: var(--accent-dark);
       font-size: 13px;
       font-weight: 700;
-      margin-bottom: 22px;
+      margin-bottom: 24px;
+    }
+
+    .hero-logo {
+      width: min(360px, 70%);
+      max-width: 100%;
+      display: block;
+      margin: 0 0 20px;
+      filter: drop-shadow(0 16px 26px rgba(7, 28, 20, 0.08));
     }
 
     h1 {
       margin: 0 0 18px;
       font-size: clamp(38px, 6vw, 66px);
-      line-height: 0.98;
-      letter-spacing: -0.04em;
+      line-height: 0.96;
+      letter-spacing: -0.05em;
+      max-width: 760px;
     }
 
     .lead {
       margin: 0;
       font-size: 19px;
       color: var(--muted);
-      max-width: 640px;
+      max-width: 690px;
     }
 
     .hero-actions {
@@ -170,12 +183,14 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 48px;
+      min-height: 50px;
       padding: 0 20px;
-      border-radius: 14px;
-      text-decoration: none;
+      border-radius: 15px;
       font-weight: 700;
-      transition: transform 0.15s ease, opacity 0.15s ease;
+      transition: transform 0.15s ease, opacity 0.15s ease, background 0.15s ease;
+      border: none;
+      cursor: pointer;
+      font: inherit;
     }
 
     .btn:hover { transform: translateY(-1px); }
@@ -201,111 +216,183 @@
     }
 
     .fact {
-      padding: 18px;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.82);
+      background: rgba(255,255,255,0.86);
       border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 18px;
     }
 
     .fact strong {
       display: block;
+      font-size: 24px;
       margin-bottom: 6px;
-      font-size: 16px;
-    }
-
-    .fact span {
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .hero-card {
-      border-radius: var(--radius-xl);
-      padding: 34px;
-    }
-
-    .hero-card img {
-      width: 140px;
-      max-width: 100%;
-      height: auto;
-      display: block;
-      margin-bottom: 22px;
-    }
-
-    .hero-card h2 {
-      margin: 0 0 12px;
-      font-size: 34px;
       letter-spacing: -0.03em;
     }
 
-    .hero-card p {
+    .fact span {
+      display: block;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .hero-side {
+      padding: 28px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .side-top {
+      background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(247,252,248,0.94));
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 28px;
+    }
+
+    .side-top h2 {
+      margin: 0 0 12px;
+      font-size: 34px;
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+
+    .side-top p {
       margin: 0;
       color: var(--muted);
       font-size: 16px;
     }
 
-    .stack {
+    .badge-grid {
       display: grid;
-      gap: 14px;
-      margin-top: 28px;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 22px;
     }
 
-    .stack-item {
-      background: var(--surface-strong);
+    .mini {
+      background: white;
       border: 1px solid var(--line);
       border-radius: 18px;
-      padding: 18px;
+      padding: 16px;
     }
 
-    .stack-item strong {
+    .mini strong {
       display: block;
-      margin-bottom: 6px;
       font-size: 15px;
+      margin-bottom: 6px;
     }
 
-    .stack-item span {
+    .mini span {
       color: var(--muted);
       font-size: 14px;
     }
 
-    .sections {
-      padding: 18px 0 32px;
+    .side-list {
+      display: grid;
+      gap: 12px;
     }
 
-    .three-grid {
+    .list-card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 20px;
+    }
+
+    .list-card strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+
+    .list-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .section {
+      padding: 18px 0;
+    }
+
+    .section-head {
+      margin-bottom: 18px;
+    }
+
+    .section-head h3 {
+      margin: 0 0 8px;
+      font-size: 34px;
+      letter-spacing: -0.04em;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 760px;
+    }
+
+    .grid-3 {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      gap: 18px;
     }
 
-    .section-card {
-      border-radius: 24px;
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      border-radius: 26px;
       padding: 28px;
     }
 
-    .section-card h3 {
+    .card h4 {
       margin: 0 0 12px;
       font-size: 22px;
+      letter-spacing: -0.03em;
     }
 
-    .section-card p {
+    .card p {
       margin: 0;
       color: var(--muted);
+    }
+
+    .highlight {
+      background: linear-gradient(135deg, #0f261d, #173727);
+      color: white;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .highlight p, .highlight .metric-note { color: rgba(255,255,255,0.82); }
+
+    .metric {
+      font-size: clamp(42px, 7vw, 72px);
+      line-height: 0.92;
+      margin: 8px 0 12px;
+      letter-spacing: -0.05em;
+      font-weight: 800;
+    }
+
+    .metric-note {
       font-size: 15px;
+      max-width: 420px;
     }
 
     .contact-section {
-      padding: 20px 0 70px;
+      padding: 22px 0 70px;
     }
 
     .contact-grid {
       display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
+      grid-template-columns: 0.88fr 1.12fr;
       gap: 22px;
       align-items: stretch;
     }
 
     .contact-card,
     .form-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
       border-radius: var(--radius-xl);
       padding: 34px;
     }
@@ -313,23 +400,23 @@
     .contact-card h3,
     .form-card h3 {
       margin: 0 0 12px;
-      font-size: 30px;
-      letter-spacing: -0.03em;
+      font-size: 32px;
+      letter-spacing: -0.04em;
     }
 
     .contact-card p,
     .form-card p {
-      margin: 0 0 24px;
+      margin: 0 0 22px;
       color: var(--muted);
     }
 
     .contact-list {
       display: grid;
-      gap: 14px;
+      gap: 12px;
     }
 
     .contact-item {
-      background: rgba(255,255,255,0.82);
+      background: white;
       border: 1px solid var(--line);
       border-radius: 18px;
       padding: 18px;
@@ -341,32 +428,24 @@
       font-size: 15px;
     }
 
-    .contact-item a,
     .contact-item span {
       color: var(--muted);
-      text-decoration: none;
-      word-break: break-word;
+      font-size: 14px;
+      display: block;
     }
 
-    form {
-      display: grid;
-      gap: 14px;
-    }
+    form { display: grid; gap: 14px; }
 
-    .field {
-      display: grid;
-      gap: 8px;
-    }
+    .field { display: grid; gap: 8px; }
 
     label {
       font-size: 14px;
       font-weight: 700;
     }
 
-    input,
-    textarea {
+    input, textarea, select {
       width: 100%;
-      border: 1px solid rgba(15, 23, 42, 0.12);
+      border: 1px solid rgba(7, 28, 20, 0.12);
       border-radius: 14px;
       padding: 14px 16px;
       font: inherit;
@@ -375,36 +454,36 @@
     }
 
     textarea {
-      min-height: 150px;
+      min-height: 160px;
       resize: vertical;
     }
 
     .form-note {
-      font-size: 13px;
       color: var(--muted);
-      margin-top: 8px;
+      font-size: 13px;
+      margin-top: 6px;
     }
 
     .footer {
-      padding: 0 0 40px;
+      padding: 0 0 42px;
       color: var(--muted);
       font-size: 14px;
       text-align: center;
     }
 
     @media (max-width: 980px) {
-      .hero-grid,
-      .contact-grid,
-      .three-grid {
+      .hero-shell,
+      .grid-3,
+      .contact-grid {
         grid-template-columns: 1fr;
       }
 
       .hero-copy,
-      .hero-card,
+      .hero-side,
       .contact-card,
       .form-card,
-      .section-card {
-        padding: 26px;
+      .card {
+        padding: 24px;
       }
 
       .hero-facts {
@@ -425,12 +504,20 @@
         flex-wrap: wrap;
       }
 
+      .hero-logo {
+        width: min(290px, 82%);
+      }
+
       h1 {
         font-size: 40px;
       }
 
       .lead {
         font-size: 17px;
+      }
+
+      .badge-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -445,87 +532,140 @@
 
       <nav class="nav-links">
         <a href="#solution">Lösung</a>
+        <a href="#impact">Impact</a>
         <a href="#contact">Kontakt</a>
-        <a class="nav-cta" href="mailto:hello@fleet2flow.eu">E-Mail senden</a>
+        <a class="nav-cta" href="#contact">Kontakt aufnehmen</a>
       </nav>
     </div>
   </header>
 
   <main id="top">
     <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <div class="eyebrow">Vehicle transfer logistics · Coming soon</div>
-          <h1>Digitale Abläufe für effiziente Fahrzeugtransfers.</h1>
+      <div class="container hero-shell">
+        <div class="panel hero-copy">
+          <div class="eyebrow">Smart platform for vehicle transfer services</div>
+          <img class="hero-logo" src="logo.png" alt="Fleet2Flow Logo groß">
+          <h1>Digitale Fahrzeugtransfers, intelligent geplant.</h1>
           <p class="lead">
-            Fleet2Flow entwickelt eine digitale Lösung, um Fahrzeugbewegungen, Verfügbarkeiten und operative Prozesse einfacher, transparenter und effizienter zu steuern.
+            Fleet2Flow baut eine smarte Plattform für Fahrzeugüberführungen mit automatisierter Routenplanung, intelligentem Matching von Fahrern und Aufträgen sowie einem klaren Fokus auf Skalierbarkeit, Zuverlässigkeit und Nachhaltigkeit.
           </p>
 
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#contact">Kontakt aufnehmen</a>
-            <a class="btn btn-secondary" href="mailto:hello@fleet2flow.eu">hello@fleet2flow.eu</a>
+            <a class="btn btn-primary" href="#contact">Demo anfragen</a>
+            <a class="btn btn-secondary" href="#solution">Mehr erfahren</a>
           </div>
 
           <div class="hero-facts">
             <div class="fact">
-              <strong>Fokus</strong>
-              <span>Vehicle transfer logistics</span>
+              <strong>DACH</strong>
+              <span>Marktfokus mit kurzfristiger Expansion in Österreich</span>
             </div>
             <div class="fact">
-              <strong>Use Case</strong>
-              <span>Koordination von Transfers und Verfügbarkeiten</span>
+              <strong>KYD</strong>
+              <span>Know Your Driver für mehr Verlässlichkeit und Qualität</span>
             </div>
             <div class="fact">
-              <strong>Status</strong>
-              <span>Early-stage startup</span>
+              <strong>27,2 t</strong>
+              <span>potenzielle CO₂-Reduktion pro Jahr bei 15 FTE</span>
             </div>
           </div>
         </div>
 
-        <aside class="hero-card">
-          <img src="logo.png" alt="Fleet2Flow Logo groß">
-          <h2>Move fleets. Keep flow.</h2>
-          <p>
-            Eine klare erste Landingpage für Gespräche mit Partnern, Kunden und Investoren.
-          </p>
+        <aside class="panel hero-side">
+          <div class="side-top">
+            <h2>Move fleets.<br>Keep flow.</h2>
+            <p>
+              Für Flottenmanager, Autohäuser, Autovermietungen und Transferdienstleister, die Fahrzeugbewegungen effizienter, transparenter und nachhaltiger organisieren wollen.
+            </p>
 
-          <div class="stack">
-            <div class="stack-item">
-              <strong>Einfacher Erstauftritt</strong>
-              <span>Professionell, klar und direkt verständlich.</span>
+            <div class="badge-grid">
+              <div class="mini">
+                <strong>Automatisierung</strong>
+                <span>Routenplanung und Disposition mit smarter Logik</span>
+              </div>
+              <div class="mini">
+                <strong>Matching</strong>
+                <span>Touren und Fahrer effizient zusammenführen</span>
+              </div>
             </div>
-            <div class="stack-item">
-              <strong>Direkter Kontakt</strong>
-              <span>Interessenten können dich sofort per Formular oder E-Mail erreichen.</span>
+          </div>
+
+          <div class="side-list">
+            <div class="list-card">
+              <strong>Das Problem</strong>
+              <p>Hoher Dispositionsaufwand, unzuverlässige Fahrer und unnötige Leer- bzw. destruktive Fahrten bremsen Skalierung und Qualität.</p>
             </div>
-            <div class="stack-item">
-              <strong>Leicht erweiterbar</strong>
-              <span>Später kannst du hier Produktinfos, Team oder LinkedIn ergänzen.</span>
+            <div class="list-card">
+              <strong>Die Lösung</strong>
+              <p>Automatisierte Routenplanung, kontinuierliche Fahrerprüfung und produktive statt destruktive Fahrten.</p>
+            </div>
+            <div class="list-card">
+              <strong>Der USP</strong>
+              <p>Skalierbare Plattformlogik, weitgehend automatisiertes Matching und ein messbarer Nachhaltigkeitseffekt.</p>
             </div>
           </div>
         </aside>
       </div>
     </section>
 
-    <section class="sections" id="solution">
-      <div class="container three-grid">
-        <div class="section-card">
-          <h3>Was Fleet2Flow macht</h3>
+    <section class="section" id="solution">
+      <div class="container">
+        <div class="section-head">
+          <h3>Warum Fleet2Flow</h3>
           <p>
-            Fleet2Flow unterstützt Unternehmen dabei, Fahrzeugtransfers besser zu planen, sauber zu koordinieren und operative Reibungsverluste zu reduzieren.
+            Die Plattform digitalisiert eine fragmentierte Nische der Fahrzeugüberführung und verbindet operative Effizienz mit smarter Disposition und nachhaltigerem Ressourceneinsatz.
           </p>
         </div>
-        <div class="section-card">
-          <h3>Warum das relevant ist</h3>
-          <p>
-            Gerade bei verteilten Fahrzeugbewegungen entstehen schnell Intransparenz, Abstimmungsaufwand und unnötige Leerzeiten. Genau hier setzt Fleet2Flow an.
-          </p>
+
+        <div class="grid-3">
+          <div class="card">
+            <h4>Automatisiertes Routenplanungstool</h4>
+            <p>
+              Fleet2Flow entlastet die Disposition durch automatisierte Tourenplanung und steigert so Effizienz, Planbarkeit und Skalierbarkeit im operativen Alltag.
+            </p>
+          </div>
+
+          <div class="card">
+            <h4>Know Your Driver</h4>
+            <p>
+              Fahrer werden identifiziert und laufend überprüft. Das schafft Vertrauen, reduziert Risiken und erhöht die Qualität der Überführungen.
+            </p>
+          </div>
+
+          <div class="card">
+            <h4>Plattformmodell mit Netzwerklogik</h4>
+            <p>
+              Ähnlich wie bei Plattformmodellen in anderen Mobility-Märkten werden Aufträge intelligent an verfügbare Fahrer und Dienstleister vermittelt.
+            </p>
+          </div>
         </div>
-        <div class="section-card">
-          <h3>Was als Nächstes kommt</h3>
-          <p>
-            Diese Seite ist der erste öffentliche Auftritt. In einem nächsten Schritt können Produktfeatures, Partner, Team und LinkedIn ergänzt werden.
-          </p>
+      </div>
+    </section>
+
+    <section class="section" id="impact">
+      <div class="container">
+        <div class="grid-3">
+          <div class="card highlight">
+            <h4>Messbarer Impact</h4>
+            <div class="metric">27,2 t</div>
+            <p class="metric-note">
+              CO₂-Einsparung pro Jahr bei 15 FTE durch die Reduktion destruktiver Fahrten und die bessere Nutzung bestehender Kapazitäten.
+            </p>
+          </div>
+
+          <div class="card">
+            <h4>Für wen es gebaut wird</h4>
+            <p>
+              Relevante Zielgruppen sind Flottenbetreiber, Autohäuser, Autovermietungen und Fahrer in der DACH-Region, die auf einer Plattform zusammengeführt werden.
+            </p>
+          </div>
+
+          <div class="card">
+            <h4>Forschungsnah und praxisorientiert</h4>
+            <p>
+              Das Konzept ist durch wissenschaftliche Arbeit im Bereich digitale Logistikplattformen und automatisierte Routenplanung gestützt und zielt auf einen ersten MVP ab.
+            </p>
+          </div>
         </div>
       </div>
     </section>
@@ -533,59 +673,70 @@
     <section class="contact-section" id="contact">
       <div class="container contact-grid">
         <div class="contact-card">
-          <h3>Kontakt</h3>
+          <h3>Lass uns sprechen</h3>
           <p>
-            Du möchtest mehr erfahren, ein erstes Gespräch führen oder dich vernetzen? Dann schreib uns gerne direkt.
+            Du möchtest Fleet2Flow kennenlernen, einen Pilot besprechen oder dich als Partner vernetzen? Dann sende uns einfach eine Nachricht.
           </p>
 
           <div class="contact-list">
             <div class="contact-item">
-              <strong>E-Mail</strong>
-              <a href="mailto:hello@fleet2flow.eu">hello@fleet2flow.eu</a>
+              <strong>Für wen</strong>
+              <span>Flottenmanager, Autohäuser, Autovermietungen, Transferdienstleister, Investoren und Pilotpartner</span>
             </div>
             <div class="contact-item">
-              <strong>Website</strong>
-              <span>fleet2flow.eu</span>
+              <strong>Was wir gerade aufbauen</strong>
+              <span>Eine digitale Plattform für Fahrzeugüberführungen mit automatisierter Routenplanung und intelligentem Matching</span>
             </div>
             <div class="contact-item">
-              <strong>Hinweis</strong>
-              <span>Das Formular öffnet dein E-Mail-Programm und erstellt eine Nachricht an Fleet2Flow.</span>
+              <strong>Kontaktweg</strong>
+              <span>Das Formular öffnet eine vorbereitete Nachricht in deinem E-Mail-Programm. Die Adresse bleibt auf der Seite bewusst unsichtbar.</span>
             </div>
           </div>
         </div>
 
         <div class="form-card">
-          <h3>Nachricht senden</h3>
+          <h3>Kontaktformular</h3>
           <p>
-            Fülle die Felder aus und klicke auf senden. Dein E-Mail-Programm öffnet sich automatisch mit der vorbereiteten Nachricht.
+            Fülle die Felder aus und sende uns dein Anliegen. Für den ersten Launch bleibt die Seite bewusst schlank und unkompliziert.
           </p>
 
-          <form action="mailto:hello@fleet2flow.eu" method="post" enctype="text/plain">
+          <form action="mailto:fleet2flow@gmail.com" method="post" enctype="text/plain">
             <div class="field">
               <label for="name">Name</label>
-              <input id="name" name="Name" type="text" placeholder="Max Mustermann" required>
-            </div>
-
-            <div class="field">
-              <label for="email">E-Mail</label>
-              <input id="email" name="E-Mail" type="email" placeholder="max@beispiel.de" required>
+              <input id="name" name="Name" type="text" placeholder="Dein Name" required>
             </div>
 
             <div class="field">
               <label for="company">Unternehmen</label>
-              <input id="company" name="Unternehmen" type="text" placeholder="Firmenname">
+              <input id="company" name="Unternehmen" type="text" placeholder="Unternehmen oder Organisation">
+            </div>
+
+            <div class="field">
+              <label for="email">E-Mail</label>
+              <input id="email" name="E-Mail" type="email" placeholder="deine@mailadresse.com" required>
+            </div>
+
+            <div class="field">
+              <label for="interest">Ich interessiere mich für</label>
+              <select id="interest" name="Interesse">
+                <option>Erstgespräch</option>
+                <option>Pilotprojekt</option>
+                <option>Partnerschaft</option>
+                <option>Investorenkontakt</option>
+                <option>Sonstiges</option>
+              </select>
             </div>
 
             <div class="field">
               <label for="message">Nachricht</label>
-              <textarea id="message" name="Nachricht" placeholder="Wobei können wir helfen?" required></textarea>
+              <textarea id="message" name="Nachricht" placeholder="Erzähl uns kurz, worum es geht." required></textarea>
             </div>
 
-            <button class="btn btn-primary" type="submit">Nachricht senden</button>
+            <button class="btn btn-primary" type="submit">Anfrage senden</button>
           </form>
 
           <div class="form-note">
-            Für ein echtes Webformular ohne E-Mail-Programm kann später kostenlos ein Dienst wie Formspree eingebunden werden.
+            Später kann kostenlos ein echter Formular-Service eingebunden werden, damit Anfragen direkt ohne E-Mail-Programm versendet werden.
           </div>
         </div>
       </div>
@@ -594,7 +745,7 @@
 
   <footer class="footer">
     <div class="container">
-      © Fleet2Flow · contact: <a href="mailto:hello@fleet2flow.eu">hello@fleet2flow.eu</a>
+      © Fleet2Flow · Smart platform for vehicle transfer services
     </div>
   </footer>
 </body>
